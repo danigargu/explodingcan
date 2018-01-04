@@ -89,7 +89,7 @@ def find_iis_path_len(url, min_len=3, max_len=70, delay=0):
             time.sleep(delay)
 
         # requests.exceptions.ReadTimeout
-        except requests.exceptions.ConnectionError, e:
+        except requests.exceptions.ConnectionError as e:
             print("[-] ERROR: %s" % e.message)
             break
 
@@ -231,7 +231,7 @@ def send_exploit(p_url, data):
     except socket.timeout:
         print("[*] Socket timeout")
         vulnerable = True
-    except socket.error, e:     
+    except socket.error as e:     
         if e.errno == 54:
             print("[*] Connection reset by peer")
             vulnerable = True
@@ -282,7 +282,7 @@ def main():
             print("[-] Server did not respond correctly to WebDAV request")
             return
             
-    except Exception, e:
+    except Exception as e:
         print("[-] %s" % e)
 
 if __name__ == '__main__':
